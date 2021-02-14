@@ -8,9 +8,8 @@ titles_from_headings:
 
 # Modify the contents below for the specific project.
 
-title: "New Game"
-description: "An app for people who don't like looking for new games, we take games you've played
-scored highly to find new game recommendations for you."
+title: "BLackjack"
+description: "Blackjack for people who don't want to go to a casino or spend money."
 author:
   name: "Kasmir Penn"
 

@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.newgame;
+package edu.cnm.deepdive.blackjack;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
