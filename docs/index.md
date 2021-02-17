@@ -1,3 +1,10 @@
+---
+title: Blackjack
+description: Blackjack on the go.
+menu: Overview
+order: 0
+---
+
 ## Summary
 
 Ever wanted to play Blackjack at anytime, of course you have, everyone's a gambler! We made it so 
@@ -18,21 +25,8 @@ feel the lows and highs off your favorite money waster, without wasting any mone
 
 ## Functionality
 
-* Play whenever you want
-
-You have to go to a casino if you want to bet money, unfortunately, our app doesn't change that(yet)
-, however it does change were and when you can play Blackjack, on your way to work? Why not take out
-your phone and get a little rush from trying to win some chips. On a really boring date? some 
-gambling should help ease your empty wallet. It's the ultimate convince, play wherever you want, 
-whenever you want!
-
-* Avoid losing money.
-
-As of writing this our app has 0 in-app purchases, meaning no matter how much you might want to buy
-more chips after losing them all, you can't. Don't worry, you can't go below 1 chip, so you can
-always have a chance to climb back up and win big. Any normal casino would kick you out after you 
-lose everything, not us, we pride ourselves on always letting our users come back to some amount of
-chips, never 0.
+> When you start the App you'll be met with a log in screen, you can login with Google or just play 
+> as guest. after you've lo
 
 ## Persistent data
 
@@ -52,12 +46,14 @@ chips, never 0.
 
 * access to google log in
 
+* [Deck Of Cards API](http://deckofcardsapi.com/)
+
 ## Stretch goals/possible enhancements 
 
 * In-App Purchases
 
-* Multiplayer
-
 * Rankings
 
 * ways to earn more chips in case you reach 1 chip
+
+* different styled decks
