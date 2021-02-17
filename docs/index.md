@@ -25,8 +25,14 @@ feel the lows and highs off your favorite money waster, without wasting any mone
 
 ## Functionality
 
-> When you start the App you'll be met with a log in screen, you can login with Google or just play 
-> as guest. after you've lo
+> When you start the App you'll be met with a log in screen, you can log in with Google or just play 
+> as guest. after you've logged in or chosen guest you'll be met with the main and only screen. The 
+> main screen is the table, here you will see the dealer's side, and the player's side, on the 
+> players side is a button that says "Deal" and when hit will deal a hand. 3 new buttons will pop up
+>, and a 4th under certain circumstances, "Hit", "Stand", "Double", and if you have 2 identical cards
+> you will see a 4th button "Split". There is a settings icon in the top left corner where you can
+> adjust volume and log out of google. At the bottom of the screen are your betting amounts, with
+> one being a custom amount you can set.
 
 ## Persistent data
 
@@ -43,10 +49,19 @@ feel the lows and highs off your favorite money waster, without wasting any mone
 ## Device/external services
 
 * Photo library access for importing images
+    
+    You can import your own pictures for your own profile picture if you wanted, if no access is 
+    given you'll have the default picture set.
 
 * access to google log in
 
+    If you want to track your ranking compared to other players you can log in using google, if no 
+    access is given you will not be able to see rankings but will still be able to play the game.
+
 * [Deck Of Cards API](http://deckofcardsapi.com/)
+
+    If access is given we will use the deck of cards API instead of using the built in card dealer 
+    code, if no access is given the default built in deck sorting and shuffling code will be used.
 
 ## Stretch goals/possible enhancements 
 
