@@ -36,18 +36,21 @@ chips, never 0.
 
 ## Persistent data
 
-* Amount of chips
+* Amount of chips after exiting the app/ leaving the table.
 
-* Win/Loss/Push ratio
+* Win/Loss/Push ratio after exiting the app/ leaving the table.
 
-* Current hands or player and dealer
+* Current hands of player and dealer if left during an ongoing game.
+
+* Last played hands of player and dealer.
+
+* google log in data, so you don't have to log back in.
 
 ## Device/external services
 
-* Camera access
+* Photo library access for importing images
 
-* Basic file access
-
+* access to google log in
 
 ## Stretch goals/possible enhancements 
 
