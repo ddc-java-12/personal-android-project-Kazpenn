@@ -7,16 +7,14 @@ feel the lows and highs off your favorite money waster, without wasting any mone
 ## Intended users
 
 * People who enjoy gambling, but don't like to lose money
-> As a verified gambling addict, I love the casino, nothing else gives the same rush as hitting on
-> a 15. My biggest issue is that I lose all my money! I've been kicked out of 4 apartments, the 
-> casino is practically my home at this point.
-> An app that lets you gamble, but you can't lose money? Sign me up!
+> As someone who loves to gamble, I want the app to not allow you to spend any real money.I want to
+> just play Blackjack or other casino games without the risk of losing all my savings. I want a real
+> betting system, but with fake currency, so I have no risk of losing my money.
 
 * People who just enjoy Blackjack
-> As one of the top Blackjack players in my state, I think it's pretty obvious that I like the game,
-> not just for the fact that I always win. An app that would let me play the game I enjoy while not 
-> while not having to worry about my state ranking, and all the money is fake, sounds like a 
-> win-win.
+> As one of the top Blackjack players in my state, I want a Blackjack app that is just Blackjack,
+> nothing extra. It would be nice if it had a minor leaderboard system as well, something to see 
+> how many people have a better win ratio.
 
 ## Functionality
 
@@ -44,15 +42,12 @@ chips, never 0.
 
 * Current hands or player and dealer
 
-
-// I'm not sure what else should go here, this is all i can think of for now.
 ## Device/external services
 
 * Camera access
 
 * Basic file access
 
-// I'm not sure the app really needs that much from the users phone
 
 ## Stretch goals/possible enhancements 
 
