@@ -5,8 +5,10 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.blackjack.model.entity.Play;
+import edu.cnm.deepdive.blackjack.model.pojo.PlayWithSplit;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +18,9 @@ public interface PlayDao {
 
   @Insert
   Single<Long> insert(Play play);
+
+  @Insert
+  Single<List<Long>> insert(Collection<Play> plays);
 
   @Update
   Single<Integer> update(Play play);
@@ -31,4 +36,8 @@ public interface PlayDao {
 
   @Query("SELECT * FROM Play ORDER BY timestamp DESC")
   LiveData<List<Play>> selectAll();
+
+  @Transaction
+  @Query("SELECT * FROM Play WHERE play_id = :playId")
+  LiveData<PlayWithSplit> selectOne(long playId);
 }

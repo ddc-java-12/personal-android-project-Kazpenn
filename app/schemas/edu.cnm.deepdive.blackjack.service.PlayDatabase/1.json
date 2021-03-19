@@ -1,0 +1,111 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "b345a2611d4e9b81a7990b15f78336a5",
+    "entities": [
+      {
+        "tableName": "Play",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`play_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `winnings` INTEGER NOT NULL, `wager` INTEGER NOT NULL, `dealer_points` INTEGER NOT NULL, `player_points` INTEGER NOT NULL, `dealer_cards` INTEGER NOT NULL, `player_cards` INTEGER NOT NULL, `split_id` INTEGER, `timestamp` INTEGER NOT NULL, FOREIGN KEY(`split_id`) REFERENCES `Play`(`play_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "play_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "winnings",
+            "columnName": "winnings",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wager",
+            "columnName": "wager",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dealerPoints",
+            "columnName": "dealer_points",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "playerPoints",
+            "columnName": "player_points",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dealerCards",
+            "columnName": "dealer_cards",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "playerCards",
+            "columnName": "player_cards",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "splitId",
+            "columnName": "split_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "play_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Play_split_id",
+            "unique": false,
+            "columnNames": [
+              "split_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Play_split_id` ON `${TABLE_NAME}` (`split_id`)"
+          },
+          {
+            "name": "index_Play_timestamp",
+            "unique": false,
+            "columnNames": [
+              "timestamp"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Play_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Play",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "split_id"
+            ],
+            "referencedColumns": [
+              "play_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b345a2611d4e9b81a7990b15f78336a5')"
+    ]
+  }
+}

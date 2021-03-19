@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".MainActivity">
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/player_points_layout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:hintEnabled="true"
+    app:hintAnimationEnabled="true"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/player_cards_layout">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/player_points"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Player Points"
+      android:inputType="number"/>
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/player_cards_layout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:hintEnabled="true"
+    app:hintAnimationEnabled="true"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/player_points_layout">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/player_cards"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Player Cards"
+      android:inputType="number"/>
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/dealer_points_layout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:hintEnabled="true"
+    app:hintAnimationEnabled="true"
+    app:layout_constraintTop_toBottomOf="@id/player_points_layout"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/dealer_cards_layout">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/dealer_points"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Dealer Points"
+      android:inputType="number"/>
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/dealer_cards_layout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:hintEnabled="true"
+    app:hintAnimationEnabled="true"
+    app:layout_constraintTop_toBottomOf="@id/player_cards_layout"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/dealer_points_layout">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/dealer_cards"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Dealer Cards"
+      android:inputType="number"/>
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/wager_layout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:hintEnabled="true"
+    app:hintAnimationEnabled="true"
+    app:layout_constraintTop_toBottomOf="@id/dealer_points_layout"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/winnings_layout">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/wager"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Wager"
+      android:inputType="number"/>
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/winnings_layout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:hintEnabled="true"
+    app:hintAnimationEnabled="true"
+    app:layout_constraintTop_toBottomOf="@id/dealer_cards_layout"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/wager_layout">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/winnings"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Winnings"
+      android:inputType="number"/>
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <Button
+    android:id="@+id/save_play"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:layout_constraintTop_toBottomOf="@id/winnings_layout"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:text="save"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
