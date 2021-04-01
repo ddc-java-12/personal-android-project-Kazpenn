@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.blackjack;
+package edu.cnm.deepdive.blackjack.controller;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
