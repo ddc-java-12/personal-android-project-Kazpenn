@@ -128,7 +128,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-rxjava2:$roomVersion"
 
-    // Svg image implementation
-    implementation 'com.caverock:androidsvg-aar:1.4'
+    //Picasso library
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }
