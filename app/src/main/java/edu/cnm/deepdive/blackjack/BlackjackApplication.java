@@ -2,6 +2,7 @@ package edu.cnm.deepdive.blackjack;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
+import edu.cnm.deepdive.blackjack.service.CardImageService;
 import edu.cnm.deepdive.blackjack.service.PlayDatabase;
 import io.reactivex.schedulers.Schedulers;
 
@@ -22,6 +23,8 @@ public class BlackjackApplication extends Application {
         .delete()
         .subscribeOn(Schedulers.io())
         .subscribe();
+    CardImageService.setContext(this);
+    CardImageService.getInstance();
   }
 
 }

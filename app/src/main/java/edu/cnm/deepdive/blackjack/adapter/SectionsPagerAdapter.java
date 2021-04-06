@@ -31,7 +31,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     // Return a PlaceholderFragment (defined as a static inner class below).
     switch (position) {
       case 0:
-        return PlayFragment.newInstance(position + 1);
+        return PlayFragment.newInstance();
       case 1:
         return HistoryFragment.newInstance();
     }

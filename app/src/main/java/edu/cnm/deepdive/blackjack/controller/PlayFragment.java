@@ -6,45 +6,37 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.blackjack.R;
-import edu.cnm.deepdive.blackjack.viewmodel.PageViewModel;
+import edu.cnm.deepdive.blackjack.databinding.FragmentPlayBinding;
+import edu.cnm.deepdive.blackjack.viewmodel.PlayViewModel;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class PlayFragment extends Fragment {
 
   private static final String ARG_SECTION_NUMBER = "section_number";
 
-  private PageViewModel pageViewModel;
+  private PlayViewModel playViewModel;
+  private FragmentPlayBinding binding;
 
-  public static PlayFragment newInstance(int index) {
-    PlayFragment fragment = new PlayFragment();
-    Bundle bundle = new Bundle();
-    bundle.putInt(ARG_SECTION_NUMBER, index);
-    fragment.setArguments(bundle);
-    return fragment;
-  }
-
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    pageViewModel = new ViewModelProvider(getActivity()).get(PageViewModel.class);
-    int index = 1;
-    if (getArguments() != null) {
-      index = getArguments().getInt(ARG_SECTION_NUMBER);
-    }
-    pageViewModel.setIndex(index);
+  public static PlayFragment newInstance() {
+    return new PlayFragment();
   }
 
   @Override
   public View onCreateView(
       @NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    View root = inflater.inflate(R.layout.fragment_main, container, false);
-    final TextView textView = root.findViewById(R.id.section_label);
-    return root;
+    binding = FragmentPlayBinding.inflate(inflater, container, false);
+    return binding.getRoot();
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view,
+      @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    playViewModel = new ViewModelProvider(getActivity()).get(PlayViewModel.class);
   }
 }
