@@ -8,9 +8,10 @@ import java.util.Map;
 
 public class Hand {
 
+  public static final int HAND_LIMIT = 21;
+
   private static final int SOFT_INCREMENT = 10;
   private static final Map<Rank, Integer> RANK_VALUES;
-  private static final int HAND_LIMIT = 21;
 
   private final List<Card> cards = new LinkedList<>();
 
@@ -66,5 +67,9 @@ public class Hand {
 
   public int size() {
     return cards.size();
+  }
+
+  public int getValue() {
+    return value;
   }
 }

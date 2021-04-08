@@ -20,10 +20,13 @@ public class HandAdapter extends RecyclerView.Adapter<Holder> {
   private final Hand hand;
   private final CardImageService cardImageService;
 
+  private boolean holeCardVisible;
 
-  public HandAdapter(Context context, Hand hand) {
+
+  public HandAdapter(Context context, Hand hand, boolean holeCardVisible) {
     this.context = context;
     this.hand = hand;
+    this.holeCardVisible = holeCardVisible;
     cardImageService = CardImageService.getInstance();
   }
 
@@ -35,12 +38,16 @@ public class HandAdapter extends RecyclerView.Adapter<Holder> {
 
   @Override
   public void onBindViewHolder(@NonNull Holder holder, int position) {
-    holder.bind(hand.getCards().get(position));
+    holder.bind(hand.getCards().get(position), position > 0 || holeCardVisible);
   }
 
   @Override
   public int getItemCount() {
     return hand.size();
+  }
+
+  public void setHoleCardVisible(boolean holeCardVisible) {
+    this.holeCardVisible = holeCardVisible;
   }
 
   class Holder extends RecyclerView.ViewHolder {
@@ -49,8 +56,12 @@ public class HandAdapter extends RecyclerView.Adapter<Holder> {
       super(itemView);
     }
 
-    private void bind(Card card) {
-      Picasso.get().load(cardImageService.getImage(card)).into((ImageView) itemView);
+    private void bind(Card card, boolean faceVisible) {
+      if (faceVisible) {
+        Picasso.get().load(cardImageService.getImage(card)).into((ImageView) itemView);
+      } else {
+        ((ImageView) itemView).setImageResource(R.drawable.ic_card_back);
+      }
     }
 
   }

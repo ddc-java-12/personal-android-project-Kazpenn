@@ -14,7 +14,8 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/player_hand"/>
+    app:layout_constraintBottom_toTopOf="@id/player_hand"
+    app:layout_constraintHeight_percent="0.4"/>
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/player_hand"
@@ -24,6 +25,33 @@
     app:layout_constraintTop_toBottomOf="@id/dealer_hand"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"/>
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHeight_percent="0.4"/>
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/hit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:useCompatPadding="true"
+    app:layout_constraintBottom_toBottomOf="@id/player_hand"
+    app:layout_constraintEnd_toEndOf="@id/player_hand"/>
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/stand"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:useCompatPadding="true"
+    app:layout_constraintTop_toTopOf="@id/player_hand"
+    app:layout_constraintEnd_toEndOf="@id/player_hand"/>
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/new_game"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:useCompatPadding="true"
+    app:layout_constraintTop_toTopOf="@id/dealer_hand"
+    app:layout_constraintEnd_toEndOf="@id/dealer_hand"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
