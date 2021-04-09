@@ -57,7 +57,8 @@ public class PlayViewModel extends AndroidViewModel implements LifecycleObserver
       }
       updateLiveData();
     } catch (Exception e) {
-      postThrowable(e);
+      // Ignoring exception, which is caused by an accidental double press.
+//      postThrowable(e);
     }
 
   }
@@ -90,7 +91,8 @@ public class PlayViewModel extends AndroidViewModel implements LifecycleObserver
       }
       updateLiveData();
     } catch (Exception e) {
-      postThrowable(e);
+      // Ignoring exception, which is caused by an accidental double press.
+//      postThrowable(e);
     }
   }
 
@@ -100,7 +102,8 @@ public class PlayViewModel extends AndroidViewModel implements LifecycleObserver
       save();
       updateLiveData();
     } catch (Exception e) {
-      postThrowable(e);
+      // Ignoring exception, which is caused by an accidental double press.
+//      postThrowable(e);
     }
   }
 

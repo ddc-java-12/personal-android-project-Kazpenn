@@ -32,6 +32,7 @@
     android:id="@+id/hit"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:src="@drawable/ic_hit"
     app:useCompatPadding="true"
     app:layout_constraintBottom_toBottomOf="@id/player_hand"
     app:layout_constraintEnd_toEndOf="@id/player_hand"/>
@@ -40,6 +41,7 @@
     android:id="@+id/stand"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:src="@drawable/ic_stand"
     app:useCompatPadding="true"
     app:layout_constraintTop_toTopOf="@id/player_hand"
     app:layout_constraintEnd_toEndOf="@id/player_hand"/>
@@ -48,10 +50,9 @@
     android:id="@+id/new_game"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:useCompatPadding="true"
+    android:src="@drawable/ic_new_game"
     app:layout_constraintTop_toTopOf="@id/dealer_hand"
-    app:layout_constraintEnd_toEndOf="@id/dealer_hand"/>
-
-
+    app:layout_constraintEnd_toEndOf="@id/dealer_hand"
+    app:useCompatPadding="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
