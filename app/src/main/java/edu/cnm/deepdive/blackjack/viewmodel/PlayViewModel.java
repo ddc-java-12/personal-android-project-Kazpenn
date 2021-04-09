@@ -5,9 +5,13 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.Transformations;
+import edu.cnm.deepdive.blackjack.model.entity.Play;
 import edu.cnm.deepdive.blackjack.model.types.Card;
 import edu.cnm.deepdive.blackjack.model.types.Hand;
 import edu.cnm.deepdive.blackjack.model.types.Session;
@@ -19,7 +23,7 @@ import java.security.SecureRandom;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PlayViewModel extends AndroidViewModel {
+public class PlayViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private static final int DEFAULT_NUM_DECKS = 6;
   private static final double DEFAULT_MARKER_POSITION = 0.25;
@@ -90,14 +94,38 @@ public class PlayViewModel extends AndroidViewModel {
   public void stand() {
     try {
       session.stand();
+      save();
       updateLiveData();
     } catch (Exception e) {
       postThrowable(e);
     }
   }
 
+  private void save() {
+    throwable.setValue(null);
+    Play play = new Play();
+    play.setDealerCards(session.getDealerHand().size());
+    play.setDealerPoints(session.getDealerHand().getValue());
+    play.setPlayerCards(session.getPlayerHand().size());
+    play.setPlayerPoints(session.getPlayerHand().getValue());
+    pending.add(
+        repository
+            .save(play)
+            .subscribe(
+                (p) -> {},
+                this::postThrowable
+            )
+    );
+  }
+
+
   private void postThrowable(Throwable throwable) {
     Log.e(getClass().getName(), throwable.getMessage(), throwable);
     this.throwable.postValue(throwable);
+  }
+
+  @OnLifecycleEvent(Event.ON_STOP)
+  private void clearPending() {
+    pending.clear();
   }
 }

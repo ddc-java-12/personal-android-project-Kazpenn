@@ -41,7 +41,7 @@ public class Session {
     boolean completed = false;
     if (playerHand.getValue() < Hand.HAND_LIMIT) {
       playerHand.add(shoe.deal());
-      if (playerHand.getValue() >= 21) {
+      if (playerHand.getValue() >= Hand.HAND_LIMIT) {
         stand();
       }
       completed = true;
@@ -53,8 +53,10 @@ public class Session {
     if (state != State.PLAYING) {
       throw new IllegalStateException();
     }
-    while (dealerHand.getValue() < 17) {
-      dealerHand.add(shoe.deal());
+    if (playerHand.getValue() > Hand.HAND_LIMIT) {
+      while (dealerHand.getValue() < 17) {
+        dealerHand.add(shoe.deal());
+      }
     }
     state = State.COMPLETED;
   }

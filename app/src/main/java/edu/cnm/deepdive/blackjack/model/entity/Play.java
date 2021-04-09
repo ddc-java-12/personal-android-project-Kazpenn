@@ -1,11 +1,14 @@
 package edu.cnm.deepdive.blackjack.model.entity;
 
+import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import edu.cnm.deepdive.blackjack.model.types.Hand;
 import java.util.Date;
+import org.jetbrains.annotations.NotNull;
 
 @Entity(
     foreignKeys = @ForeignKey(
@@ -115,5 +118,43 @@ public class Play {
 
   public void setTimestamp(@NonNull Date timestamp) {
     this.timestamp = timestamp;
+  }
+
+  @SuppressLint("DefaultLocale")
+  @NonNull
+  @Override
+  public String toString() {
+    return String.format("%s %d(%d) / %d(%d) : %s",
+        timestamp,
+        dealerPoints,
+        dealerCards,
+        playerPoints,
+        playerCards,
+        winner()
+    );
+  }
+
+  private String winner() {
+    String result;
+    if (playerPoints > Hand.HAND_LIMIT) {
+      result = "dealer wins";
+    } else if (dealerPoints > Hand.HAND_LIMIT) {
+      result = "player wins";
+    } else if (playerPoints > dealerPoints) {
+      result = "player wins";
+    } else if (dealerPoints > playerPoints) {
+      result = "dealer wins";
+    } else if (dealerPoints == Hand.HAND_LIMIT) {
+      if (dealerCards == 2 && playerCards > 2) {
+        result = "dealer wins";
+      } else if (playerCards == 2 && dealerCards > 2) {
+        result = "player wins";
+      } else {
+        result = "push";
+      }
+    } else {
+      result = "push";
+    }
+    return result;
   }
 }

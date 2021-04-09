@@ -5,10 +5,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import edu.cnm.deepdive.blackjack.R;
 import edu.cnm.deepdive.blackjack.adapter.SectionsPagerAdapter;
+import edu.cnm.deepdive.blackjack.viewmodel.PlayViewModel;
 
 public class NavigationActivity extends AppCompatActivity {
 
@@ -22,6 +26,13 @@ public class NavigationActivity extends AppCompatActivity {
     viewPager.setAdapter(sectionsPagerAdapter);
     TabLayout tabs = findViewById(R.id.tabs);
     tabs.setupWithViewPager(viewPager);
+    PlayViewModel viewModel = new ViewModelProvider(this).get(PlayViewModel.class);
+    viewModel.getThrowable().observe(this, (throwable) -> {
+      if (throwable != null) {
+        Snackbar.make(findViewById(R.id.base_view), throwable.getMessage(),
+            BaseTransientBottomBar.LENGTH_INDEFINITE).show();
+      }
+    });
   }
 
   @Override

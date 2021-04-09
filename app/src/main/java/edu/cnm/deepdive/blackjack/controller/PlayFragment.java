@@ -58,6 +58,7 @@ public class PlayFragment extends Fragment {
       @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     playViewModel = new ViewModelProvider(getActivity()).get(PlayViewModel.class);
+    getLifecycle().addObserver(playViewModel);
     playViewModel.getPlayerHand().observe(getViewLifecycleOwner(), (hand) -> {
       showHand(hand, true, binding.playerHand);
       // TODO Display the value of the players (maybe and dealers hand).
