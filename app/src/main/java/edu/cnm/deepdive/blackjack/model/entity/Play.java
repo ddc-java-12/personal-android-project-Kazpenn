@@ -145,9 +145,9 @@ public class Play {
     } else if (dealerPoints > playerPoints) {
       result = "dealer wins";
     } else if (dealerPoints == Hand.HAND_LIMIT) {
-      if (dealerCards == 2 && playerCards > 2) {
+      if (dealerCards == 2) {
         result = "dealer wins";
-      } else if (playerCards == 2 && dealerCards > 2) {
+      } else if (playerCards == 2) {
         result = "player wins";
       } else {
         result = "push";

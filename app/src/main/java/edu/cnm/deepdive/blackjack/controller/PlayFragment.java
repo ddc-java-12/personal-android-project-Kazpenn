@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.blackjack.R;
 import edu.cnm.deepdive.blackjack.adapter.HandAdapter;
 import edu.cnm.deepdive.blackjack.databinding.FragmentPlayBinding;
@@ -76,6 +78,12 @@ public class PlayFragment extends Fragment {
       binding.hit.setVisibility((state == State.PLAYING) ? View.VISIBLE : View.INVISIBLE);
       binding.stand.setVisibility((state == State.PLAYING) ? View.VISIBLE : View.INVISIBLE);
       binding.newGame.setVisibility((state == State.COMPLETED) ? View.VISIBLE : View.INVISIBLE);
+    });
+    playViewModel.getThrowable().observe(getViewLifecycleOwner(), (throwable) -> {
+      if (throwable != null) {
+        Snackbar.make(binding.getRoot(), throwable.getMessage(),
+            BaseTransientBottomBar.LENGTH_LONG).show();
+      }
     });
 
   }

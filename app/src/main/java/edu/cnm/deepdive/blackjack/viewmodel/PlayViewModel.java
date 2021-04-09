@@ -52,18 +52,14 @@ public class PlayViewModel extends AndroidViewModel implements LifecycleObserver
   public void newGame() {
     try {
       session.newHand();
-      // TODO Check for Dealer Blackjack
+      if (session.getState() == State.COMPLETED) {
+        save();
+      }
       updateLiveData();
     } catch (Exception e) {
       postThrowable(e);
     }
 
-  }
-
-  private void updateLiveData() {
-    dealerHand.setValue(session.getDealerHand());
-    playerHand.setValue(session.getPlayerHand());
-    state.setValue(session.getState());
   }
 
   public LiveData<Hand> getDealerHand() {
@@ -78,6 +74,10 @@ public class PlayViewModel extends AndroidViewModel implements LifecycleObserver
     return state;
   }
 
+  public LiveData<List<Play>> getHistory() {
+    return repository.getAll();
+  }
+
   public LiveData<Throwable> getThrowable() {
     return throwable;
   }
@@ -85,6 +85,9 @@ public class PlayViewModel extends AndroidViewModel implements LifecycleObserver
   public void hit() {
     try {
       session.hit();
+      if (session.getState() == State.COMPLETED) {
+        save();
+      }
       updateLiveData();
     } catch (Exception e) {
       postThrowable(e);
@@ -118,6 +121,11 @@ public class PlayViewModel extends AndroidViewModel implements LifecycleObserver
     );
   }
 
+  private void updateLiveData() {
+    dealerHand.setValue(session.getDealerHand());
+    playerHand.setValue(session.getPlayerHand());
+    state.setValue(session.getState());
+  }
 
   private void postThrowable(Throwable throwable) {
     Log.e(getClass().getName(), throwable.getMessage(), throwable);

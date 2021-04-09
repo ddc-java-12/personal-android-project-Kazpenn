@@ -26,13 +26,6 @@ public class NavigationActivity extends AppCompatActivity {
     viewPager.setAdapter(sectionsPagerAdapter);
     TabLayout tabs = findViewById(R.id.tabs);
     tabs.setupWithViewPager(viewPager);
-    PlayViewModel viewModel = new ViewModelProvider(this).get(PlayViewModel.class);
-    viewModel.getThrowable().observe(this, (throwable) -> {
-      if (throwable != null) {
-        Snackbar.make(findViewById(R.id.base_view), throwable.getMessage(),
-            BaseTransientBottomBar.LENGTH_INDEFINITE).show();
-      }
-    });
   }
 
   @Override

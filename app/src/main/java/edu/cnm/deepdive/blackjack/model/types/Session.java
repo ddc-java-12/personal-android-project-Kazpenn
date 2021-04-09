@@ -20,7 +20,7 @@ public class Session {
 
   public void newHand() {
     if (state != State.COMPLETED) {
-      throw new IllegalStateException();
+      throw new IllegalStateException("Hand is in progress");
     }
     if (shoe == null || shoe.isExhausted()) {
       shoe = new Shoe(6, 0.25, new SecureRandom());
@@ -31,12 +31,18 @@ public class Session {
     playerHand.add(shoe.deal());
     dealerHand.add(shoe.deal());
     dealerHand.add(shoe.deal());
-    state = State.PLAYING;
+    if (dealerHand.getCards().get(1).getRank() == Rank.ACE && dealerHand.isBlackjack()) {
+      state = State.COMPLETED;
+    } else if (playerHand.isBlackjack()) {
+     stand();
+    } else {
+      state = State.PLAYING;
+    }
   }
 
   public boolean hit() {
     if (state != State.PLAYING) {
-      throw new IllegalStateException();
+      throw new IllegalStateException("Hand is already complete");
     }
     boolean completed = false;
     if (playerHand.getValue() < Hand.HAND_LIMIT) {
@@ -51,9 +57,9 @@ public class Session {
 
   public void stand() {
     if (state != State.PLAYING) {
-      throw new IllegalStateException();
+      throw new IllegalStateException("Hand is already complete");
     }
-    if (playerHand.getValue() > Hand.HAND_LIMIT) {
+    if (playerHand.getValue() <= Hand.HAND_LIMIT) {
       while (dealerHand.getValue() < 17) {
         dealerHand.add(shoe.deal());
       }
